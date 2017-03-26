@@ -9,9 +9,13 @@
 // 1. put "MOCK_TXTv1.csv" file in project root folder (contains src folder)
 // 2. put "Swing.java" in the src folder
 // 3. run "Swing.java" file
-// 4. Data source (jRadioButton1,jRadioButton2) needs to implement
+// 4. Data source (jRadioButton1,jRadioButton2) needs to implement // you mean database connection ? 
 // 5. Parsing user input text field (jTextField1) needs to implement
 // 6. The function of generating html file doesn't work properly (sometimes work, sometimes not).
+
+// 4. TODO with @ Ernesto tomorrow!
+// 5. FIXED I used getter fields locally for JtextField1.
+// 6. FIXED I used black magic, I dont want to talk about it. It works everytime now!
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -22,6 +26,7 @@ import java.awt.event.ItemListener;
 import javax.swing.*;
 
 public class Swing extends javax.swing.JFrame {
+	
     // data array for previewing
     public static String[][] uiStringData = new String[3][3];
     // data array for generating table of fiels in the top panel (jPanel2)
@@ -31,10 +36,12 @@ public class Swing extends javax.swing.JFrame {
     // string array for output file type selection (jComboBox3)
     public static String[] fileType = {"html","csv","html and csv"};
     // default output file name
+    // NONE OF THE GETTERS ARE WORKING BECAUSE THIS CANT BE CHANGED?
     public String outputName = "pivotOutputFile";
     // array for storing information about selected fileds of row and column
     static int[] fieldSelection = {0,0};
     // int for output file type selection (jComboBox3)
+    // I think this needs to be set to 1!!
     static int tileTypeSelection = 0;
     // int for for selected field of sum (jComboBox4)
     static int sumSelection = 0;
@@ -49,6 +56,7 @@ public class Swing extends javax.swing.JFrame {
     public void fetchData() {
         // set local disk button selected for now, because there is no database.
         jRadioButton1.setSelected(true);
+        
         // generate table of fiels for viewing in the top panel (jPanel2)
         jTable2.setModel(new javax.swing.table.DefaultTableModel(uiStringData2, tableColTitle));
         // for row field selection
@@ -90,17 +98,22 @@ public class Swing extends javax.swing.JFrame {
         });
         // button event for output file type 
         jButton2.addActionListener(new ActionListener(){ 
+        	// note 1 is html
+        	//2 is csv
+        	// 3 is both
+        	
 	    public void actionPerformed(ActionEvent e){
-                if(tileTypeSelection == 1){
+	    		tileTypeSelection=jComboBox3.getSelectedIndex();
+                if(tileTypeSelection == 0){
                     PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
-                    TablePrinter.printHtmlDoc(outputName, tree, sumSelection);
+                    TablePrinter.printHtmlDoc(jTextField1.getText(), tree, sumSelection);
+                }else if(tileTypeSelection == 1){
+                    PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
+                    TablePrinter.printCsvDoc(jTextField1.getText(), tree, sumSelection);
                 }else if(tileTypeSelection == 2){
                     PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
-                    TablePrinter.printCsvDoc(outputName, tree, sumSelection);
-                }else if(tileTypeSelection == 3){
-                    PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
-                    TablePrinter.printHtmlDoc(outputName, tree, sumSelection);
-                    TablePrinter.printCsvDoc(outputName, tree, sumSelection);
+                    TablePrinter.printHtmlDoc(jTextField1.getText(), tree, sumSelection);
+                    TablePrinter.printCsvDoc(jTextField1.getText(), tree, sumSelection);
                 } 
             } 
         });
@@ -430,7 +443,8 @@ public class Swing extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         //strings for input/output paths
-        String input;        
+        String input; 
+        
         //input data source
         input = "MOCK_TXTv1.csv";
         //method which reads raw data and organizes it into array of records
