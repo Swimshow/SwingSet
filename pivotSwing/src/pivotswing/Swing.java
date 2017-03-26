@@ -1,16 +1,4 @@
-// HEY AIKEN, SO I HAVE MADE THIS REPO 
-// FOR JUST YOU AND ME. SEE IF YOU CAN CLONE 
-// ONLY THIS FILE INTO YOUR WORKSPACE TO EDIT IT
-// AND PULL REQUEST SO THAT I CAN SEE YOUR CHANGES.
-// JUST ADD SOME COMMENTS BELOW THIS :)
-
 // Aiken co-works with Daniel on swing GUI project and Add some basic layout and functions!!
-// 1. put "MOCK_TXTv1.csv" file in project root folder (contains src folder)
-// 2. put "Swing.java" in the src folder
-// 3. run "Swing.java" file
-// 4. Data source (jRadioButton1,jRadioButton2) needs to implement
-// 5. Parsing user input text field (jTextField1) needs to implement
-// 6. The function of generating html file doesn't work properly (sometimes work, sometimes not).
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
