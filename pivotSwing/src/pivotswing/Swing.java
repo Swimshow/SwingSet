@@ -1,4 +1,4 @@
-// Aiken co-works with Daniel on swing GUI project!!
+// Aiken co-works with Daniel on swing GUI project and Add some basic layout and functions!!
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
