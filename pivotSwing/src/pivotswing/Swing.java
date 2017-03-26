@@ -1,9 +1,3 @@
-// HEY AIKEN, SO I HAVE MADE THIS REPO 
-// FOR JUST YOU AND ME. SEE IF YOU CAN CLONE 
-// ONLY THIS FILE INTO YOUR WORKSPACE TO EDIT IT
-// AND PULL REQUEST SO THAT I CAN SEE YOUR CHANGES.
-// JUST ADD SOME COMMENTS BELOW THIS :)
-
 // Aiken co-works with Daniel on swing GUI project and Add some basic layout and functions!!
 
 import java.awt.Dimension;
