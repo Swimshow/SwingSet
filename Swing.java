@@ -23,6 +23,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class Swing extends javax.swing.JFrame {
@@ -107,13 +112,40 @@ public class Swing extends javax.swing.JFrame {
                 if(tileTypeSelection == 0){
                     PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
                     TablePrinter.printHtmlDoc(jTextField1.getText(), tree, sumSelection);
+                    // add .html
+                    String pass = jTextField1.getText()+".html";
+                    try {
+						Open.openSesame(pass);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                 }else if(tileTypeSelection == 1){
                     PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
                     TablePrinter.printCsvDoc(jTextField1.getText(), tree, sumSelection);
+                    jTextField1.setText(jTextField1.getText());
+                    String pass = jTextField1.getText()+".csv";
+                    try {
+						Open.openSesame(pass);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                 }else if(tileTypeSelection == 2){
                     PivotTree tree = new PivotTree(fieldSelection, DataSet.getDataSet());
                     TablePrinter.printHtmlDoc(jTextField1.getText(), tree, sumSelection);
                     TablePrinter.printCsvDoc(jTextField1.getText(), tree, sumSelection);
+                    String pass1 = jTextField1.getText()+".html";
+                    String pass2 = jTextField1.getText()+".csv";
+                    try {
+						Open.openSesame(pass1);
+						Open.openSesame(pass2);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+                  
+                    
                 } 
             } 
         });
@@ -517,3 +549,30 @@ public class Swing extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration                     
 }
+class Open {
+	
+	static String filePath = "WEBSITES_COURSES.txt";
+	
+	
+    public static void openSesame(String filePath) throws IOException {
+        //text file, should be opening in default text editor
+    	
+        File file = new File(filePath);
+        
+        //first check if Desktop is supported by Platform or not
+        if(!Desktop.isDesktopSupported()){
+            System.out.println("Desktop is not supported");
+            return;
+        }
+        
+        Desktop desktop = Desktop.getDesktop();
+        if(file.exists()) desktop.open(file);
+        
+        //let's try to open PDF file
+//        file = new File("/Users/pankaj/java.pdf");
+//        if(file.exists()) desktop.open(file);
+    }// END OF OPENSESAME
+    
+    
+
+}// END OF OPEN CLASS
