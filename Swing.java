@@ -188,7 +188,7 @@ public class Swing extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "row Field", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setText("Choose Raw Fields:");
+        jLabel3.setText("Choose Row Fields:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,9 +274,9 @@ public class Swing extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jButton1.setText("view Table");
+        jButton1.setText("View Table");
 
-        jButton2.setText("file export");    
+        jButton2.setText("File Export");    
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -362,7 +362,7 @@ public class Swing extends javax.swing.JFrame {
 
         jLabel7.setText("Data source:");
 
-        jRadioButton1.setText("locak disk");
+        jRadioButton1.setText("local disk");
 
         jRadioButton2.setText("database");
 
