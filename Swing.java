@@ -568,8 +568,8 @@ class Open {
         Desktop desktop = Desktop.getDesktop();
         if(file.exists()) desktop.open(file);
         
-      
-    }// END OF OPENSESAME
+      //done.
+    }// END OF OPENSESAME 
     
     
 
